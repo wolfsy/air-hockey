@@ -10,9 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    qgraphicsgloweffect.cpp \
     widget.cpp
 
 HEADERS += \
+    qgraphicsgloweffect.h \
     widget.h
 
 FORMS += \
