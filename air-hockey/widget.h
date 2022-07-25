@@ -22,5 +22,8 @@ private:
     QGraphicsEllipseItem *playerOneEllipse;
     QGraphicsEllipseItem *playerTwoEllipse;
     QGraphicsEllipseItem *puck;
+    int width = 1100;
+    int height = 629;
+    int lengthMatch = 24;
 };
 #endif // WIDGET_H

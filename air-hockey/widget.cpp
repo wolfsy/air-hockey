@@ -6,7 +6,9 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene();
+    QWidget::setFixedSize(width + lengthMatch, height + lengthMatch);
+    scene = new QGraphicsScene(0, 0, width, height, this);
+    scene->setBackgroundBrush(QPixmap(":\\graphics\\field.png"));
     ui->graphicsView->setScene(scene);
 
     QBrush firstPlayerCustomization(Qt::red);
