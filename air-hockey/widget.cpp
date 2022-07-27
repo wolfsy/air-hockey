@@ -28,37 +28,91 @@ Widget::Widget(QWidget *parent)
     bluePlayerEllipse = scene -> addEllipse(QRectF(1000, 280, 50, 50), borderBlueEllipse, bluePlayerCustomization);
     puck = scene -> addEllipse(QRectF(545, 290, 30, 30), borderPuck, puckCustomization);
 
-    QGraphicsGlowEffect * redEllipseGlow = new QGraphicsGlowEffect();
+    QGraphicsGlowEffect *redEllipseGlow = new QGraphicsGlowEffect();
     redEllipseGlow -> setColor(Qt::red);
     redEllipseGlow -> setStrength(2);
     redEllipseGlow -> setBlurRadius(14);
     redPlayerEllipse -> setGraphicsEffect(redEllipseGlow);
 
-    QGraphicsGlowEffect * blueEllipseGlow = new QGraphicsGlowEffect();
+    QGraphicsGlowEffect *blueEllipseGlow = new QGraphicsGlowEffect();
     blueEllipseGlow -> setColor(Qt::blue);
     blueEllipseGlow -> setStrength(2);
     blueEllipseGlow -> setBlurRadius(14);
     bluePlayerEllipse -> setGraphicsEffect(blueEllipseGlow);
 
-    QGraphicsGlowEffect * puckEllipseGlow = new QGraphicsGlowEffect();
+    QGraphicsGlowEffect *puckEllipseGlow = new QGraphicsGlowEffect();
     puckEllipseGlow -> setColor(Qt::white);
     puckEllipseGlow -> setStrength(2);
     puckEllipseGlow -> setBlurRadius(8);
     puck -> setGraphicsEffect(puckEllipseGlow);
 
-    QPen borderColorSetup(Qt::white);
+    QBrush borderCustomization(Qt:: white);
 
-    QBrush borderCustomizationOne(Qt:: white);
+    QPen borderColorHorizontalSetupOne(Qt::yellow);
+    QPen borderColorVerticalSetupOne(Qt::yellow);
+    QPen borderColorHorizontalSetupTwo(Qt::magenta);
+    QPen borderColorVerticalSetupTwo(Qt::magenta);
+    QPen borderColorHorizontalSetupThree(Qt::green);
+    QPen borderColorVerticalSetupThree(Qt::green);
+    QPen borderColorHorizontalSetupFour(Qt::cyan);
+    QPen borderColorVerticalSetupFour(Qt::cyan);
 
-    rect1 = scene -> addRect(10, 5, 540, 5, borderColorSetup, borderCustomizationOne);
-    rect2 = scene -> addRect(5, 15, 5, 200, borderColorSetup, borderCustomizationOne);
-    rect3 = scene -> addRect(565, 5, 525, 5, borderColorSetup, borderCustomizationOne);
-    rect4 = scene -> addRect(1090, 15, 5, 200, borderColorSetup, borderCustomizationOne);
-    rect5 = scene -> addRect(570, 619, 520, 5, borderColorSetup, borderCustomizationOne);
-    rect6 = scene -> addRect(1090, 415, 5, 200, borderColorSetup, borderCustomizationOne);
-    rect7 = scene -> addRect(10, 619, 545, 5, borderColorSetup, borderCustomizationOne);
-    rect8 = scene -> addRect(5, 415, 5, 200, borderColorSetup, borderCustomizationOne);
+    rect1 = scene -> addRect(5, 5, 546, 5, borderColorHorizontalSetupOne, borderCustomization);
+    rect2 = scene -> addRect(5, 15, 5, 200, borderColorVerticalSetupOne, borderCustomization);
+    rect3 = scene -> addRect(564, 5, 531, 5, borderColorHorizontalSetupTwo, borderCustomization);
+    rect4 = scene -> addRect(1090, 15, 5, 200, borderColorVerticalSetupTwo, borderCustomization);
+    rect5 = scene -> addRect(569, 619, 526, 5, borderColorHorizontalSetupThree, borderCustomization);
+    rect6 = scene -> addRect(1090, 415, 5, 200, borderColorVerticalSetupThree, borderCustomization);
+    rect7 = scene -> addRect(5, 619, 551, 5, borderColorHorizontalSetupFour, borderCustomization);
+    rect8 = scene -> addRect(5, 415, 5, 200, borderColorVerticalSetupFour, borderCustomization);
 
+    QGraphicsGlowEffect *borderColorVerticalOneGlow = new QGraphicsGlowEffect();
+    borderColorVerticalOneGlow -> setColor(Qt::yellow);
+    borderColorVerticalOneGlow -> setStrength(5);
+    borderColorVerticalOneGlow -> setBlurRadius(15);
+    rect1 -> setGraphicsEffect(borderColorVerticalOneGlow);
+
+    QGraphicsGlowEffect *borderColorHorizontalOneGlow = new QGraphicsGlowEffect();
+    borderColorHorizontalOneGlow -> setColor(Qt::yellow);
+    borderColorHorizontalOneGlow -> setStrength(5);
+    borderColorHorizontalOneGlow -> setBlurRadius(15);
+    rect2 -> setGraphicsEffect(borderColorHorizontalOneGlow);
+
+    QGraphicsGlowEffect *borderColorVerticalTwoGlow = new QGraphicsGlowEffect();
+    borderColorVerticalTwoGlow -> setColor(Qt::magenta);
+    borderColorVerticalTwoGlow -> setStrength(5);
+    borderColorVerticalTwoGlow -> setBlurRadius(15);
+    rect3 -> setGraphicsEffect(borderColorVerticalTwoGlow);
+
+    QGraphicsGlowEffect *borderColorHorizontalTwoGlow = new QGraphicsGlowEffect();
+    borderColorHorizontalTwoGlow -> setColor(Qt::magenta);
+    borderColorHorizontalTwoGlow -> setStrength(5);
+    borderColorHorizontalTwoGlow -> setBlurRadius(15);
+    rect4 -> setGraphicsEffect(borderColorHorizontalTwoGlow);
+
+    QGraphicsGlowEffect *borderColorVerticalThreeGlow = new QGraphicsGlowEffect();
+    borderColorVerticalThreeGlow -> setColor(Qt::green);
+    borderColorVerticalThreeGlow -> setStrength(5);
+    borderColorVerticalThreeGlow -> setBlurRadius(15);
+    rect5 -> setGraphicsEffect(borderColorVerticalThreeGlow);
+
+    QGraphicsGlowEffect *borderColorHorizontalThreeGlow = new QGraphicsGlowEffect();
+    borderColorHorizontalThreeGlow -> setColor(Qt::green);
+    borderColorHorizontalThreeGlow -> setStrength(5);
+    borderColorHorizontalThreeGlow -> setBlurRadius(15);
+    rect6 -> setGraphicsEffect(borderColorHorizontalThreeGlow);
+
+    QGraphicsGlowEffect *borderColorVerticalFourGlow = new QGraphicsGlowEffect();
+    borderColorVerticalFourGlow -> setColor(Qt::cyan);
+    borderColorVerticalFourGlow -> setStrength(5);
+    borderColorVerticalFourGlow -> setBlurRadius(15);
+    rect7 -> setGraphicsEffect(borderColorVerticalFourGlow);
+
+    QGraphicsGlowEffect *borderColorHorizontalFourGlow = new QGraphicsGlowEffect();
+    borderColorHorizontalFourGlow -> setColor(Qt::cyan);
+    borderColorHorizontalFourGlow -> setStrength(5);
+    borderColorHorizontalFourGlow -> setBlurRadius(15);
+    rect8 -> setGraphicsEffect(borderColorHorizontalFourGlow);
 
 }
 
