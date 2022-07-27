@@ -25,5 +25,13 @@ private:
     int width = 1100;
     int height = 629;
     int lengthMatch = 24;
+    QGraphicsRectItem *rect1;
+    QGraphicsRectItem *rect2;
+    QGraphicsRectItem *rect3;
+    QGraphicsRectItem *rect4;
+    QGraphicsRectItem *rect5;
+    QGraphicsRectItem *rect6;
+    QGraphicsRectItem *rect7;
+    QGraphicsRectItem *rect8;
 };
 #endif // WIDGET_H

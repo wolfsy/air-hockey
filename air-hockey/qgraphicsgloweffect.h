@@ -14,11 +14,12 @@ class QGraphicsGlowEffect :
 {
 public:
   explicit QGraphicsGlowEffect(QObject *parent = 0);
-
   QRectF boundingRectFor(const QRectF &rect) const;
+
   void setColor(QColor value);
   void setStrength(int value);
   void setBlurRadius(qreal value);
+
   QColor color() const;
   int strength() const;
   qreal blurRadius() const;

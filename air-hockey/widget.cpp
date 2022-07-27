@@ -46,6 +46,20 @@ Widget::Widget(QWidget *parent)
     puckEllipseGlow -> setBlurRadius(8);
     puck -> setGraphicsEffect(puckEllipseGlow);
 
+    QPen borderColorSetup(Qt::white);
+
+    QBrush borderCustomizationOne(Qt:: white);
+
+    rect1 = scene -> addRect(10, 5, 540, 5, borderColorSetup, borderCustomizationOne);
+    rect2 = scene -> addRect(5, 15, 5, 200, borderColorSetup, borderCustomizationOne);
+    rect3 = scene -> addRect(565, 5, 525, 5, borderColorSetup, borderCustomizationOne);
+    rect4 = scene -> addRect(1090, 15, 5, 200, borderColorSetup, borderCustomizationOne);
+    rect5 = scene -> addRect(570, 619, 520, 5, borderColorSetup, borderCustomizationOne);
+    rect6 = scene -> addRect(1090, 415, 5, 200, borderColorSetup, borderCustomizationOne);
+    rect7 = scene -> addRect(10, 619, 545, 5, borderColorSetup, borderCustomizationOne);
+    rect8 = scene -> addRect(5, 415, 5, 200, borderColorSetup, borderCustomizationOne);
+
+
 }
 
 Widget::~Widget()
