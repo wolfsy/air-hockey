@@ -24,9 +24,11 @@ Widget::Widget(QWidget *parent)
     QBrush bluePlayerCustomization(Qt::blue);
     QBrush puckCustomization(Qt::white);
 
-    redPlayerEllipse = scene -> addEllipse(QRectF(50, 280, 50, 50), borderRedEllipse, redPlayerCustomization);
-    bluePlayerEllipse = scene -> addEllipse(QRectF(1000, 280, 50, 50), borderBlueEllipse, bluePlayerCustomization);
-    puck = scene -> addEllipse(QRectF(545, 290, 30, 30), borderPuck, puckCustomization);
+    redPlayerEllipse = scene -> addEllipse(QRectF(50, 285, 50, 50), borderRedEllipse, redPlayerCustomization);
+    redPlayerEllipse -> setFlag(QGraphicsItem::ItemIsMovable);
+    bluePlayerEllipse = scene -> addEllipse(QRectF(1000, 285, 50, 50), borderBlueEllipse, bluePlayerCustomization);
+    bluePlayerEllipse -> setFlag(QGraphicsItem::ItemIsMovable);
+    puck = scene -> addEllipse(QRectF(545, 295, 30, 30), borderPuck, puckCustomization);
 
     QGraphicsGlowEffect *redEllipseGlow = new QGraphicsGlowEffect();
     redEllipseGlow -> setColor(Qt::red);
