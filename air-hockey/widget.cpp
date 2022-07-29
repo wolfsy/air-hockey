@@ -30,6 +30,10 @@ Widget::Widget(QWidget *parent)
     Puck *puck = new Puck();
     scene -> addItem(puck);
 
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
+    timer -> start(10);
+
     QGraphicsGlowEffect *redEllipseGlow = new QGraphicsGlowEffect();
     redEllipseGlow -> setColor(Qt::red);
     redEllipseGlow -> setStrength(2);
@@ -41,12 +45,6 @@ Widget::Widget(QWidget *parent)
     blueEllipseGlow -> setStrength(2);
     blueEllipseGlow -> setBlurRadius(14);
     bluePlayerEllipse -> setGraphicsEffect(blueEllipseGlow);
-
-    QGraphicsGlowEffect *puckEllipseGlow = new QGraphicsGlowEffect();
-    puckEllipseGlow -> setColor(Qt::white);
-    puckEllipseGlow -> setStrength(2);
-    puckEllipseGlow -> setBlurRadius(8);
-    puck -> setGraphicsEffect(puckEllipseGlow);
 
     QBrush borderCustomization(Qt:: white);
 
