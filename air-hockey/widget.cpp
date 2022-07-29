@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "qgraphicsgloweffect.h"
+#include "puck.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -14,21 +15,20 @@ Widget::Widget(QWidget *parent)
 
     QPen borderRedEllipse(Qt::white);
     QPen borderBlueEllipse(Qt::white);
-    QPen borderPuck(Qt::white);
 
     borderRedEllipse.setWidthF(1.6);
     borderBlueEllipse.setWidthF(1.6);
-    borderPuck.setWidthF(0.2);
 
     QBrush redPlayerCustomization(Qt::red);
     QBrush bluePlayerCustomization(Qt::blue);
-    QBrush puckCustomization(Qt::white);
 
     redPlayerEllipse = scene -> addEllipse(QRectF(50, 285, 50, 50), borderRedEllipse, redPlayerCustomization);
     redPlayerEllipse -> setFlag(QGraphicsItem::ItemIsMovable);
     bluePlayerEllipse = scene -> addEllipse(QRectF(1000, 285, 50, 50), borderBlueEllipse, bluePlayerCustomization);
     bluePlayerEllipse -> setFlag(QGraphicsItem::ItemIsMovable);
-    puck = scene -> addEllipse(QRectF(545, 295, 30, 30), borderPuck, puckCustomization);
+
+    Puck *puck = new Puck();
+    scene -> addItem(puck);
 
     QGraphicsGlowEffect *redEllipseGlow = new QGraphicsGlowEffect();
     redEllipseGlow -> setColor(Qt::red);
