@@ -11,7 +11,7 @@ RedPlayer::RedPlayer(QGraphicsItem *parent):
     QBrush redPlayerCustomization(Qt::red);
     setBrush(redPlayerCustomization);
     setRect(QRectF(positionX, positionY, 50, 50));
-    setFlag(QGraphicsItem::ItemIsFocusable);
+//    setFlag(ItemIsFocusable);
 
     redPlayerEllipseGlow = new QGraphicsGlowEffect();
     redPlayerEllipseGlow -> setColor(Qt::red);

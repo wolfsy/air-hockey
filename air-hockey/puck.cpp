@@ -22,8 +22,8 @@ Puck::Puck(QGraphicsItem *parent):
 void Puck::advance(int phase)
 {
     if (phase) {
-//        moveBy(0, 0); poczatek gry - obiekt się nie porusza
-        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
+        moveBy(0, 0); // poczatek gry - obiekt się nie porusza
+//        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
 //        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
 
 

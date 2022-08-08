@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "qgraphicsgloweffect.h"
+#include <QTimer>
 #include "redplayer.h"
 #include "blueplayer.h"
 #include "puck.h"
@@ -97,7 +98,6 @@ Widget::Widget(QWidget *parent)
     borderColorHorizontalFourGlow -> setStrength(5);
     borderColorHorizontalFourGlow -> setBlurRadius(15);
     rect8 -> setGraphicsEffect(borderColorHorizontalFourGlow);
-
 }
 
 Widget::~Widget()
