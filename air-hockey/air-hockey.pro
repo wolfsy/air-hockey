@@ -9,14 +9,18 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    blueplayer.cpp \
     main.cpp \
     puck.cpp \
     qgraphicsgloweffect.cpp \
+    redplayer.cpp \
     widget.cpp
 
 HEADERS += \
+    blueplayer.h \
     puck.h \
     qgraphicsgloweffect.h \
+    redplayer.h \
     widget.h
 
 FORMS += \

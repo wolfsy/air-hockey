@@ -20,9 +20,6 @@ public:
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
-    QGraphicsEllipseItem *redPlayerEllipse;
-    QGraphicsEllipseItem *bluePlayerEllipse;
-    QGraphicsEllipseItem *puck;
     int width = 1100;
     int height = 629;
     int lengthMatch = 24;
