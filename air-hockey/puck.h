@@ -13,7 +13,9 @@ public:
     void advance(int phase);
 
 private:
-    double movementSpeed;
+    double verticalMovementSpeed;
+    double horizontalMovementSpeed;
+    QGraphicsGlowEffect *puckEllipseGlow;
 };
 
 #endif // PUCK_H
