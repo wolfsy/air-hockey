@@ -11,6 +11,7 @@ Puck::Puck(QGraphicsItem *parent):
     setRect(QRectF(545, 295, 30, 30));
     setBrush(puckCustomization);
     setPen(borderPuck);
+    setZValue(1);
 
     puckEllipseGlow = new QGraphicsGlowEffect();
     puckEllipseGlow -> setColor(Qt::gray);
@@ -29,6 +30,8 @@ void Puck::advance(int phase)
 
     } else {
         if (!collidingItems().isEmpty()) {
+            moveBy(5,0);
+
 //            double x = horizontalMovementSpeed;
 //            double y = verticalMovementSpeed;
             horizontalMovementSpeed = -horizontalMovementSpeed;

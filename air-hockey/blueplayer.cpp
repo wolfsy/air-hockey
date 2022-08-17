@@ -11,7 +11,7 @@ BluePlayer::BluePlayer(QGraphicsItem *parent):
     QBrush bluePlayerCustomization(Qt::blue);
     setBrush(bluePlayerCustomization);
     setRect(QRectF(positionX, positionY, 50, 50));
-    setFlag(ItemIsFocusable);
+    setZValue(1);
 
     bluePlayerEllipseGlow = new QGraphicsGlowEffect();
     bluePlayerEllipseGlow -> setColor(Qt::blue);
@@ -40,4 +40,6 @@ void BluePlayer::keyPressEvent(QKeyEvent *event) {
         }
     }
     setRect(QRectF(positionX, positionY, 50, 50));
+    setFlag(QGraphicsItem::ItemIsFocusable, true);
+    setFocusProxy(parentItem());
 }

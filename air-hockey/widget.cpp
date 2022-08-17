@@ -16,13 +16,14 @@ Widget::Widget(QWidget *parent)
     scene -> setBackgroundBrush(QPixmap(":\\graphics\\field.png"));
     ui -> graphicsView -> setScene(scene);   
 
-    QBrush bluePlayerCustomization(Qt::blue);
-
     RedPlayer *redplayer = new RedPlayer();
     scene -> addItem(redplayer);
+    redplayer -> setFlag(QGraphicsItem::ItemIsFocusable, true);
+    redplayer -> setFocus();
 
     BluePlayer *blueplayer = new BluePlayer();
     scene -> addItem(blueplayer);
+    blueplayer -> setFlag(QGraphicsItem::ItemIsFocusable, true);
 
     Puck *puck = new Puck();
     scene -> addItem(puck);

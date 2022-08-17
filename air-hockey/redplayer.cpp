@@ -11,7 +11,8 @@ RedPlayer::RedPlayer(QGraphicsItem *parent):
     QBrush redPlayerCustomization(Qt::red);
     setBrush(redPlayerCustomization);
     setRect(QRectF(positionX, positionY, 50, 50));
-//    setFlag(ItemIsFocusable);
+    setZValue(1);
+
 
     redPlayerEllipseGlow = new QGraphicsGlowEffect();
     redPlayerEllipseGlow -> setColor(Qt::red);
@@ -21,5 +22,25 @@ RedPlayer::RedPlayer(QGraphicsItem *parent):
 }
 
 void RedPlayer::keyPressEvent(QKeyEvent *event) {
-
+    int key = event -> key();
+    if (key == Qt::Key_A) {
+        if (positionX > 20 && positionX < 525) {
+            positionX -= 10;
+        }
+    } else if (key == Qt::Key_D) {
+        if (positionX > 5 && positionX < 505) {
+            positionX += 10;
+        }
+    } else if (key == Qt::Key_W) {
+        if (positionY > 20 && positionY < 580) {
+            positionY -= 10;
+        }
+    } else if (key == Qt::Key_S) {
+        if (positionY > 5 && positionY < 565) {
+            positionY += 10;
+        }
+    }
+    setRect(QRectF(positionX, positionY, 50, 50));
+    setFlag(QGraphicsItem::ItemIsFocusable, true);
+    setFocusProxy(parentItem());
 }
