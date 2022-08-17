@@ -3,15 +3,14 @@
 Puck::Puck(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
     verticalMovementSpeed(-3),
-    horizontalMovementSpeed(3)
+    horizontalMovementSpeed(5)
 {
     QBrush puckCustomization(Qt::white);
     QPen borderPuck(Qt::white);
-    borderPuck.setWidthF(0.2);
-    setRect(QRectF(545, 295, 30, 30));
+    setRect(QRectF(545, 295, 15, 15));
     setBrush(puckCustomization);
     setPen(borderPuck);
-    setZValue(1);
+    setZValue(2);
 
     puckEllipseGlow = new QGraphicsGlowEffect();
     puckEllipseGlow -> setColor(Qt::gray);
@@ -26,15 +25,17 @@ void Puck::advance(int phase)
         moveBy(0, 0); // poczatek gry - obiekt się nie porusza
 //        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
 //        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
+//        moveBy(verticalMovementSpeed, 0);
 
-
+        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
+        return;
     } else {
         if (!collidingItems().isEmpty()) {
-            moveBy(5,0);
 
 //            double x = horizontalMovementSpeed;
 //            double y = verticalMovementSpeed;
             horizontalMovementSpeed = -horizontalMovementSpeed;
+            verticalMovementSpeed = -verticalMovementSpeed;
 
 //            horizontalMovementSpeed = -horizontalMovementSpeed;
 //            if (x > horizontalMovementSpeed) {
