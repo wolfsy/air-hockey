@@ -16,6 +16,8 @@ private:
     double verticalMovementSpeed;
     double horizontalMovementSpeed;
     QGraphicsGlowEffect *puckEllipseGlow;
+    int puckX;
+    int puckY;
 };
 
 #endif // PUCK_H

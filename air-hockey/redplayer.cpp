@@ -12,13 +12,14 @@ RedPlayer::RedPlayer(QGraphicsItem *parent):
     setBrush(redPlayerCustomization);
     setRect(QRectF(positionX, positionY, 50, 50));
     setZValue(1);
-
+    setSpanAngle(5760);
 
     redPlayerEllipseGlow = new QGraphicsGlowEffect();
     redPlayerEllipseGlow -> setColor(Qt::red);
     redPlayerEllipseGlow -> setStrength(2);
     redPlayerEllipseGlow -> setBlurRadius(14);
     setGraphicsEffect(redPlayerEllipseGlow);
+
 }
 
 void RedPlayer::keyPressEvent(QKeyEvent *event) {

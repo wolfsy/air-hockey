@@ -2,12 +2,13 @@
 
 Puck::Puck(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
-    verticalMovementSpeed(-3),
+    verticalMovementSpeed(6),
     horizontalMovementSpeed(5)
 {
     QBrush puckCustomization(Qt::white);
     QPen borderPuck(Qt::white);
-    setRect(QRectF(545, 295, 15, 15));
+    setRect(545, 295, 20, 20);
+    setPos(5, 5);
     setBrush(puckCustomization);
     setPen(borderPuck);
     setZValue(2);
@@ -22,28 +23,30 @@ Puck::Puck(QGraphicsItem *parent):
 void Puck::advance(int phase)
 {
     if (phase) {
-        moveBy(0, 0); // poczatek gry - obiekt się nie porusza
-//        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
-//        moveBy(verticalMovementSpeed, horizontalMovementSpeed);
-//        moveBy(verticalMovementSpeed, 0);
-
+//        moveBy(0,0);
         moveBy(verticalMovementSpeed, horizontalMovementSpeed);
         return;
     } else {
         if (!collidingItems().isEmpty()) {
 
-//            double x = horizontalMovementSpeed;
-//            double y = verticalMovementSpeed;
-            horizontalMovementSpeed = -horizontalMovementSpeed;
-            verticalMovementSpeed = -verticalMovementSpeed;
+            //detecting coordinates of the puck during collision
+            puckX = this -> pos().x();
+            puckY = this -> pos().y();
+            qDebug() << "Coordinates of the puck (x,y):" << puckX << ", "<< puckY;
 
-//            horizontalMovementSpeed = -horizontalMovementSpeed;
-//            if (x > horizontalMovementSpeed) {
-//                verticalMovementSpeed = -verticalMovementSpeed;
-//            }
-//            if (y > verticalMovementSpeed) {
-//                horizontalMovementSpeed = -horizontalMovementSpeed;
-//            }
+            if (this -> pos().x() >= 525 && pos().y() < 0) { // side magenta border
+                verticalMovementSpeed = -verticalMovementSpeed;
+            } else if (this -> pos().y() <= -285) { // magenta and yellow bottom borders
+                horizontalMovementSpeed = -horizontalMovementSpeed;
+            } else if (this -> pos().x() >= 525 && pos().y() > 0) { // side green border
+                verticalMovementSpeed = -verticalMovementSpeed;
+            } else if (pos().y() >= 305) { // green and cyan bottom borders
+                horizontalMovementSpeed = -horizontalMovementSpeed;
+            } else if (this -> pos().x() <= -535 && pos().y() < 0) { // side yellow border
+                verticalMovementSpeed = -verticalMovementSpeed;
+            } else if (this -> pos().x() <= -535 && pos().y() > 0) { // side cyan border
+                verticalMovementSpeed = -verticalMovementSpeed;
+            }
         }
     }
 }
