@@ -2,15 +2,18 @@
 
 BluePlayer::BluePlayer(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
-    positionX(1000),
-    positionY(285)
+    positionX(1030),
+    positionY(285),
+    speedX(0.5),
+    speedY(3)
 {
     QPen borderBlueEllipse(Qt::white);
     setPen(borderBlueEllipse);
     borderBlueEllipse.setWidthF(1.6);
     QBrush bluePlayerCustomization(Qt::blue);
     setBrush(bluePlayerCustomization);
-    setRect(QRectF(positionX, positionY, 50, 50));
+    setRect(positionX, positionY, 50, 50);
+    setPos(0, 0);
     setZValue(1);
 
     bluePlayerEllipseGlow = new QGraphicsGlowEffect();
@@ -42,4 +45,20 @@ void BluePlayer::keyPressEvent(QKeyEvent *event) {
     setRect(QRectF(positionX, positionY, 50, 50));
     setFlag(QGraphicsItem::ItemIsFocusable, true);
     setFocusProxy(parentItem());
+}
+
+void BluePlayer::advance(int phase)
+{
+    if (phase) {
+        moveBy(speedX, speedY);
+        return;
+    } else {
+        if (this -> pos().y() >= 100) {
+            speedY = -speedY;
+        } else if (this -> pos().y() <= -100) {
+            speedY = -speedY;
+        } else if (this -> pos().y() == 0) {
+            speedX = -speedX;
+        }
+    }
 }

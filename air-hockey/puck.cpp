@@ -29,10 +29,10 @@ void Puck::advance(int phase)
     } else {
         if (!collidingItems().isEmpty()) {
 
-            //detecting coordinates of the puck during collision
+            //detecting coordinates of the puck during collision with borders
             puckX = this -> pos().x();
             puckY = this -> pos().y();
-            qDebug() << "Coordinates of the puck (x,y):" << puckX << ", "<< puckY;
+//            qDebug() << "Coordinates of the puck's collision (x,y):" << puckX << ", "<< puckY;
 
             if (this -> pos().x() >= 525 && pos().y() < 0) { // side magenta border
                 verticalMovementSpeed = -verticalMovementSpeed;

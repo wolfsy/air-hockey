@@ -14,10 +14,13 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *event);
+    void advance(int phase);
 
 private:
     int positionX;
     int positionY;
+    double speedX;
+    double speedY;
     QGraphicsGlowEffect *bluePlayerEllipseGlow;
 };
 
