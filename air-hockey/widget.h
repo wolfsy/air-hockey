@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include "QTimer"
+#include "QLabel"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -31,5 +32,7 @@ private:
     QGraphicsRectItem *rect6;
     QGraphicsRectItem *rect7;
     QGraphicsRectItem *rect8;
+    QLabel *redPlayerScore;
+    QLabel *bluePlayerScore;
 };
 #endif // WIDGET_H

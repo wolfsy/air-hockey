@@ -16,7 +16,7 @@ BluePlayer::BluePlayer(QGraphicsItem *parent):
     setPos(0, 0);
     setZValue(1);
 
-    bluePlayerEllipseGlow = new QGraphicsGlowEffect();
+    bluePlayerEllipseGlow = new QGraphicsGlowEffect();    
     bluePlayerEllipseGlow -> setColor(Qt::blue);
     bluePlayerEllipseGlow -> setStrength(2);
     bluePlayerEllipseGlow -> setBlurRadius(14);
@@ -59,6 +59,10 @@ void BluePlayer::advance(int phase)
             speedY = -speedY;
         } else if (this -> pos().y() == 0) {
             speedX = -speedX;
+        }
+        if (!collidingItems().isEmpty()) {
+            bluePlayerEllipseGlow -> setColor(Qt::cyan);
+            speedY = -speedY;
         }
     }
 }

@@ -1,9 +1,10 @@
 #include "puck.h"
+#include "widget.h"
 
 Puck::Puck(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
     verticalMovementSpeed(6),
-    horizontalMovementSpeed(5)
+    horizontalMovementSpeed(4)
 {
     QBrush puckCustomization(Qt::white);
     QPen borderPuck(Qt::white);
@@ -47,6 +48,18 @@ void Puck::advance(int phase)
             } else if (this -> pos().x() <= -535 && pos().y() > 0) { // side cyan border
                 verticalMovementSpeed = -verticalMovementSpeed;
             }
+        } else if (this -> pos().x() > 545 || this -> pos().x() < -555) {
+//            scene()->addText("Game over!", QFont("Arial", 50)) -> setPos(0, 0);
+           int counter = 0;
+           if (counter == 0) {
+            scene() -> addText("0", QFont("Arial", 30));
+           } else {
+               scene() -> addText("1", QFont("Arial", 30));
+           }
+           counter++;
+           setPos(5, 5);
+           verticalMovementSpeed = -verticalMovementSpeed;
+           horizontalMovementSpeed = -horizontalMovementSpeed;
         }
     }
 }
