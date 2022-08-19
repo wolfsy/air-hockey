@@ -32,32 +32,6 @@ Widget::Widget(QWidget *parent)
     connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
     timer -> start(10);
 
-    QFont scoreBoardFont("Helvetica", 20);
-
-    redPlayerScore = new QLabel(this);
-    redPlayerScore -> setText("0");
-    redPlayerScore -> setGeometry(542, 30, 50, 50);
-    redPlayerScore -> setStyleSheet("color : white");
-    redPlayerScore -> setFont(scoreBoardFont);
-
-    QGraphicsGlowEffect *redPlayerScoreGlow = new QGraphicsGlowEffect();
-    redPlayerScoreGlow -> setColor(Qt::darkRed);
-    redPlayerScoreGlow -> setStrength(3);
-    redPlayerScoreGlow -> setBlurRadius(10);
-    redPlayerScore -> setGraphicsEffect(redPlayerScoreGlow);
-
-    bluePlayerScore = new QLabel(this);
-    bluePlayerScore -> setText("0");
-    bluePlayerScore -> setGeometry(582, 30, 50, 50);
-    bluePlayerScore -> setStyleSheet("color : white");
-    bluePlayerScore -> setFont(scoreBoardFont);
-
-    QGraphicsGlowEffect *bluePlayerScoreGlow = new QGraphicsGlowEffect();
-    bluePlayerScoreGlow -> setColor(Qt::darkBlue);
-    bluePlayerScoreGlow -> setStrength(3);
-    bluePlayerScoreGlow -> setBlurRadius(10);
-    bluePlayerScore -> setGraphicsEffect(bluePlayerScoreGlow);
-
     QBrush borderCustomization(Qt:: white);
 
     QPen borderColorHorizontalSetupOne(Qt::yellow);

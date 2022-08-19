@@ -18,6 +18,18 @@ private:
     QGraphicsGlowEffect *puckEllipseGlow;
     int puckX;
     int puckY;
+    int scoreCounterByRed;
+    int scoreCounterByBlue;
+    QGraphicsTextItem *firstRedScore;
+    QGraphicsTextItem *secondRedScore;
+    QGraphicsTextItem *thirdRedScore;
+    QGraphicsTextItem *fourthRedScore;
+    QGraphicsTextItem *fifthRedScore;
+    QGraphicsTextItem *firstBlueScore;
+    QGraphicsTextItem *secondBlueScore;
+    QGraphicsTextItem *thirdBlueScore;
+    QGraphicsTextItem *fourthBlueScore;
+    QGraphicsTextItem *fifthBlueScore;
 };
 
 #endif // PUCK_H
