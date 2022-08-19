@@ -16,6 +16,8 @@ private:
     double verticalMovementSpeed;
     double horizontalMovementSpeed;
     QGraphicsGlowEffect *puckEllipseGlow;
+    QGraphicsGlowEffect *redPlayerScoreGlow;
+    QGraphicsGlowEffect *bluePlayerScoreGlow;
     int puckX;
     int puckY;
     int scoreCounterByRed;
@@ -30,6 +32,7 @@ private:
     QGraphicsTextItem *thirdBlueScore;
     QGraphicsTextItem *fourthBlueScore;
     QGraphicsTextItem *fifthBlueScore;
+    QGraphicsTextItem *finish;
 };
 
 #endif // PUCK_H

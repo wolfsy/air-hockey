@@ -4,7 +4,7 @@
 Puck::Puck(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
     verticalMovementSpeed(6),
-    horizontalMovementSpeed(4),
+    horizontalMovementSpeed(0),
     scoreCounterByRed(0),
     scoreCounterByBlue(0)
 {
@@ -54,15 +54,18 @@ void Puck::advance(int phase)
             //setting up the scoreboard logic
         } else if (this -> pos().x() > 545) {
             scoreCounterByRed++;
+            setPos(5, 5);
+            verticalMovementSpeed = -verticalMovementSpeed;
+            horizontalMovementSpeed = -horizontalMovementSpeed;
 
-            QGraphicsGlowEffect *redPlayerScoreGlow = new QGraphicsGlowEffect();
+            redPlayerScoreGlow = new QGraphicsGlowEffect();
             redPlayerScoreGlow -> setColor(Qt::white);
             redPlayerScoreGlow -> setStrength(3);
             redPlayerScoreGlow -> setBlurRadius(10);
 
             if (scoreCounterByRed == 1) {
                 firstRedScore = scene() -> addText("1");
-                firstRedScore -> setPos(100, 30);
+                firstRedScore -> setPos(522, 30);
                 firstRedScore -> setDefaultTextColor(Qt::white);
                 firstRedScore -> setFont(QFont ("Arial", 20));
                 firstRedScore -> setZValue(3);
@@ -71,7 +74,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByRed == 2) {
                 firstRedScore -> hide();
                 secondRedScore = scene() -> addText("2");
-                secondRedScore -> setPos(100, 30);
+                secondRedScore -> setPos(522, 30);
                 secondRedScore -> setDefaultTextColor(Qt::white);
                 secondRedScore -> setFont(QFont ("Arial", 20));
                 secondRedScore -> setZValue(3);
@@ -80,7 +83,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByRed == 3) {
                 secondRedScore -> hide();
                 thirdRedScore = scene() -> addText("3");
-                thirdRedScore -> setPos(100, 30);
+                thirdRedScore -> setPos(522, 30);
                 thirdRedScore -> setDefaultTextColor(Qt::white);
                 thirdRedScore -> setFont(QFont ("Arial", 20));
                 thirdRedScore -> setZValue(3);
@@ -89,7 +92,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByRed == 4) {
                 thirdRedScore -> hide();
                 fourthRedScore = scene() -> addText("4");
-                fourthRedScore -> setPos(100, 30);
+                fourthRedScore -> setPos(522, 30);
                 fourthRedScore -> setDefaultTextColor(Qt::white);
                 fourthRedScore -> setFont(QFont ("Arial", 20));
                 fourthRedScore -> setZValue(3);
@@ -98,30 +101,37 @@ void Puck::advance(int phase)
             } else if (scoreCounterByRed == 5) {
                 fourthRedScore -> hide();
                 fifthRedScore = scene() -> addText("5");
-                fifthRedScore -> setPos(100, 30);
+                fifthRedScore -> setPos(522, 30);
                 fifthRedScore -> setDefaultTextColor(Qt::white);
                 fifthRedScore -> setFont(QFont ("Arial", 20));
                 fifthRedScore -> setZValue(3);
                 fifthRedScore -> setGraphicsEffect(redPlayerScoreGlow);
 
-                // koniec gry ...
+                finish = scene() -> addText("Game has ended. Red player won the battle!");
+                finish -> setPos(20, 60);
+                finish -> setDefaultTextColor(Qt::white);
+                finish -> setFont(QFont ("Arial", 40));
+                finish -> setZValue(4);
+
+                setPos(5, 5);
+                verticalMovementSpeed = 0;
+                horizontalMovementSpeed = 0;
             }
 
+        } else if (this -> pos().x() < -555) {
+            scoreCounterByBlue++;
             setPos(5, 5);
             verticalMovementSpeed = -verticalMovementSpeed;
             horizontalMovementSpeed = -horizontalMovementSpeed;
 
-        } else if (this -> pos().x() < -555) {
-            scoreCounterByBlue++;
-
-            QGraphicsGlowEffect *bluePlayerScoreGlow = new QGraphicsGlowEffect();
+            bluePlayerScoreGlow = new QGraphicsGlowEffect();
             bluePlayerScoreGlow -> setColor(Qt::white);
             bluePlayerScoreGlow -> setStrength(3);
             bluePlayerScoreGlow -> setBlurRadius(10);
 
             if (scoreCounterByBlue == 1) {
                 firstBlueScore = scene() -> addText("1");
-                firstBlueScore -> setPos(600, 30);
+                firstBlueScore -> setPos(570, 30);
                 firstBlueScore -> setDefaultTextColor(Qt::white);
                 firstBlueScore -> setFont(QFont ("Arial", 20));
                 firstBlueScore -> setZValue(3);
@@ -130,7 +140,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByBlue == 2) {
                 firstBlueScore -> hide();
                 secondBlueScore = scene() -> addText("2");
-                secondBlueScore -> setPos(600, 30);
+                secondBlueScore -> setPos(570, 30);
                 secondBlueScore -> setDefaultTextColor(Qt::white);
                 secondBlueScore -> setFont(QFont ("Arial", 20));
                 secondBlueScore -> setZValue(3);
@@ -139,7 +149,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByBlue == 3) {
                 secondBlueScore -> hide();
                 thirdBlueScore = scene() -> addText("3");
-                thirdBlueScore -> setPos(600, 30);
+                thirdBlueScore -> setPos(570, 30);
                 thirdBlueScore -> setDefaultTextColor(Qt::white);
                 thirdBlueScore -> setFont(QFont ("Arial", 20));
                 thirdBlueScore -> setZValue(3);
@@ -148,7 +158,7 @@ void Puck::advance(int phase)
             } else if (scoreCounterByBlue == 4) {
                 thirdBlueScore -> hide();
                 fourthBlueScore = scene() -> addText("4");
-                fourthBlueScore -> setPos(600, 30);
+                fourthBlueScore -> setPos(570, 30);
                 fourthBlueScore -> setDefaultTextColor(Qt::white);
                 fourthBlueScore -> setFont(QFont ("Arial", 20));
                 fourthBlueScore -> setZValue(3);
@@ -157,19 +167,22 @@ void Puck::advance(int phase)
             } else if (scoreCounterByBlue == 5) {
                 fourthBlueScore -> hide();
                 fifthBlueScore = scene() -> addText("5");
-                fifthBlueScore -> setPos(600, 30);
+                fifthBlueScore -> setPos(570, 30);
                 fifthBlueScore -> setDefaultTextColor(Qt::white);
                 fifthBlueScore -> setFont(QFont ("Arial", 20));
                 fifthBlueScore -> setZValue(3);
                 fifthBlueScore -> setGraphicsEffect(bluePlayerScoreGlow);
 
-                // koniec gry ...
+                finish = scene() -> addText("Game has ended. Blue player won the battle!");
+                finish -> setPos(20, 60);
+                finish -> setDefaultTextColor(Qt::white);
+                finish -> setFont(QFont ("Arial", 40));
+                finish -> setZValue(4);
+
+                setPos(5, 5);
+                verticalMovementSpeed = 0;
+                horizontalMovementSpeed = 0;
             }
-
-
-            setPos(5, 5);
-            verticalMovementSpeed = -verticalMovementSpeed;
-            horizontalMovementSpeed = -horizontalMovementSpeed;
         }
     }
 }

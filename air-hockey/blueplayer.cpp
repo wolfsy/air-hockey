@@ -53,16 +53,12 @@ void BluePlayer::advance(int phase)
         moveBy(speedX, speedY);
         return;
     } else {
-        if (this -> pos().y() >= 100) {
+        if (this -> pos().y() >= 80) {
             speedY = -speedY;
-        } else if (this -> pos().y() <= -100) {
+        } else if (this -> pos().y() <= -70) {
             speedY = -speedY;
         } else if (this -> pos().y() == 0) {
             speedX = -speedX;
-        }
-        if (!collidingItems().isEmpty()) {
-            bluePlayerEllipseGlow -> setColor(Qt::cyan);
-            speedY = -speedY;
         }
     }
 }
