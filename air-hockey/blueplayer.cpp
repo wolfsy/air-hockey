@@ -4,7 +4,7 @@ BluePlayer::BluePlayer(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
     positionX(1030),
     positionY(285),
-    speedX(0.5),
+//    speedX(0.5),
     speedY(3)
 {
     QPen borderBlueEllipse(Qt::white);
@@ -57,8 +57,8 @@ void BluePlayer::advance(int phase)
             speedY = -speedY;
         } else if (this -> pos().y() <= -70) {
             speedY = -speedY;
-        } else if (this -> pos().y() == 0) {
+        } /*else if (this -> pos().y() == 0) {
             speedX = -speedX;
-        }
+        }*/
     }
 }

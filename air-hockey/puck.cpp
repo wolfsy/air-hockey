@@ -3,7 +3,7 @@
 
 Puck::Puck(QGraphicsItem *parent):
     QGraphicsEllipseItem(parent),
-    verticalMovementSpeed(6),
+    verticalMovementSpeed(-4),
     horizontalMovementSpeed(0),
     scoreCounterByRed(0),
     scoreCounterByBlue(0)
@@ -26,7 +26,6 @@ Puck::Puck(QGraphicsItem *parent):
 void Puck::advance(int phase)
 {
     if (phase) {
-//        moveBy(0,0);
         moveBy(verticalMovementSpeed, horizontalMovementSpeed);
         return;
     } else {
@@ -39,24 +38,52 @@ void Puck::advance(int phase)
 
             if (this -> pos().x() >= 525 && pos().y() < 0) { // side magenta border
                 verticalMovementSpeed = -verticalMovementSpeed;
-            } else if (this -> pos().y() <= -285) { // magenta and yellow bottom borders
+            } else if (this -> pos().y() <= -285) { // magenta and yellow ceiling borders
                 horizontalMovementSpeed = -horizontalMovementSpeed;
             } else if (this -> pos().x() >= 525 && pos().y() > 0) { // side green border
                 verticalMovementSpeed = -verticalMovementSpeed;
-            } else if (pos().y() >= 305) { // green and cyan bottom borders
+            } else if (pos().y() >= 300) { // green and cyan bottom borders
                 horizontalMovementSpeed = -horizontalMovementSpeed;
             } else if (this -> pos().x() <= -535 && pos().y() < 0) { // side yellow border
                 verticalMovementSpeed = -verticalMovementSpeed;
             } else if (this -> pos().x() <= -535 && pos().y() > 0) { // side cyan border
                 verticalMovementSpeed = -verticalMovementSpeed;
+            } else {
+                // puck's bouncing off logic
+                if (verticalMovementSpeed < 0) {
+                    isVerticalNegative = true;
+                } else if (verticalMovementSpeed >= 0) {
+                    isVerticalNegative = false;
+                }
+
+                if (horizontalMovementSpeed < 0) {
+                    isHorizontalNegative = true;
+                } else if (horizontalMovementSpeed >= 0) {
+                    isHorizontalNegative = false;
+                }
+
+                if (isVerticalNegative == true && horizontalMovementSpeed < 4 && horizontalMovementSpeed > -4) {
+                    double valueH = QRandomGenerator::global() -> bounded(1, 3);
+                    horizontalMovementSpeed += valueH;
+                } else if (isVerticalNegative == false && horizontalMovementSpeed < 4 && horizontalMovementSpeed > -4) {
+                    double valueH = QRandomGenerator::global() -> bounded(1, 3);
+                    horizontalMovementSpeed -= valueH;
+                } else {
+                    horizontalMovementSpeed;
+                }
+
+                verticalMovementSpeed = -verticalMovementSpeed;
+                horizontalMovementSpeed = -horizontalMovementSpeed;
             }
 
             //setting up the scoreboard logic
         } else if (this -> pos().x() > 545) {
             scoreCounterByRed++;
             setPos(5, 5);
+
+            double valueH = QRandomGenerator::global() -> bounded(-2, 2);
+            horizontalMovementSpeed = valueH;
             verticalMovementSpeed = -verticalMovementSpeed;
-            horizontalMovementSpeed = -horizontalMovementSpeed;
 
             redPlayerScoreGlow = new QGraphicsGlowEffect();
             redPlayerScoreGlow -> setColor(Qt::white);
@@ -121,8 +148,10 @@ void Puck::advance(int phase)
         } else if (this -> pos().x() < -555) {
             scoreCounterByBlue++;
             setPos(5, 5);
+
+            double valueH = QRandomGenerator::global() -> bounded(-3, 3);
+            horizontalMovementSpeed = valueH;
             verticalMovementSpeed = -verticalMovementSpeed;
-            horizontalMovementSpeed = -horizontalMovementSpeed;
 
             bluePlayerScoreGlow = new QGraphicsGlowEffect();
             bluePlayerScoreGlow -> setColor(Qt::white);

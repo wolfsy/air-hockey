@@ -5,6 +5,7 @@
 #include <QBrush>
 #include <QPen>
 #include <qgraphicsgloweffect.h>
+#include <QRandomGenerator>
 
 class Puck : public QGraphicsEllipseItem
 {
@@ -33,6 +34,8 @@ private:
     QGraphicsTextItem *fourthBlueScore;
     QGraphicsTextItem *fifthBlueScore;
     QGraphicsTextItem *finish;
+    bool isVerticalNegative;
+    bool isHorizontalNegative;
 };
 
 #endif // PUCK_H
