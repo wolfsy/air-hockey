@@ -69,7 +69,7 @@ void Puck::advance(int phase)
                     double valueH = QRandomGenerator::global() -> bounded(1, 3);
                     horizontalMovementSpeed -= valueH;
                 } else {
-                    horizontalMovementSpeed;
+                    horizontalMovementSpeed = 0;
                 }
 
                 verticalMovementSpeed = -verticalMovementSpeed;
@@ -92,6 +92,7 @@ void Puck::advance(int phase)
 
             if (scoreCounterByRed == 1) {
                 firstRedScore = scene() -> addText("1");
+                firstRedScore -> shape();
                 firstRedScore -> setPos(522, 30);
                 firstRedScore -> setDefaultTextColor(Qt::white);
                 firstRedScore -> setFont(QFont ("Arial", 20));
