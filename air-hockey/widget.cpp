@@ -12,6 +12,7 @@ Widget::Widget(QWidget *parent)
 {
     ui -> setupUi(this);
     QWidget::setFixedSize(width + lengthMatch, height + lengthMatch);
+    QWidget::setWindowTitle("Air hockey game");
     scene = new QGraphicsScene(0, 0, width, height, this);
     scene -> setBackgroundBrush(QPixmap(":\\graphics\\field.png"));
     ui -> graphicsView -> setScene(scene);   
